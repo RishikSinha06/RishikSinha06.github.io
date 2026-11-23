@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rishik Sinha</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Rishik Sinha: AI and ML undergraduate at Symbiosis Institute of Technology, Pune. Machine learning, deep learning, NLP and data analytics projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: fixed profile column on the left (name, links, section nav); content scrolls on the right. Stacks to one column on phones. */
+:root{
+  --bg:#FFFFFF; --panel:#F6F7F9; --ink:#111827; --body:#374151; --muted:#6B7280; --line:#E5E7EB;
+  --accent:#0E6E6A; --accent-soft:#E6F2F1;
+  --f-head:"Inter Tight","Inter","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1117; --panel:#151B23; --ink:#F0F3F6; --body:#C9D1D9; --muted:#8B949E; --line:#262D36;
+  --accent:#4FC1B8; --accent-soft:#12302E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1117; --panel:#151B23; --ink:#F0F3F6; --body:#C9D1D9; --muted:#8B949E; --line:#262D36;
+  --accent:#4FC1B8; --accent-soft:#12302E; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--body);font:400 15.5px/1.7 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-head);color:var(--ink);margin:0;text-wrap:balance}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+p{margin:0}
+
+.shell{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:340px minmax(0,1fr);gap:72px;
+  padding-left:max(24px, env(safe-area-inset-left, 0px));padding-right:max(24px, env(safe-area-inset-right, 0px))}
+
+/* profile column */
+.profile{position:sticky;top:0;height:100vh;max-height:100dvh;padding-block:72px 40px;display:flex;flex-direction:column}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font:700 22px/1 var(--f-head);letter-spacing:.02em;margin-bottom:22px}
+.profile h1{font-size:38px;font-weight:700;letter-spacing:-.025em;line-height:1.1}
+.role{font:500 17px/1.4 var(--f-body);color:var(--ink);margin-top:8px}
+.tagline{color:var(--muted);margin-top:14px;font-size:15px;max-width:30ch}
+.loc{display:flex;flex-direction:column;gap:6px;margin-top:20px;font-size:14px;color:var(--body)}
+.loc span{display:flex;align-items:center;gap:8px}
+.loc svg{width:15px;height:15px;color:var(--muted);flex:none}
+.open{display:inline-flex;align-items:center;gap:8px;margin-top:18px;align-self:flex-start;font-size:13px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
+.open i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+.toc{margin-top:40px;display:flex;flex-direction:column}
+.toc a{display:flex;align-items:center;gap:14px;padding:7px 0;font:500 12px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.toc a::before{content:"";width:28px;height:1px;background:var(--muted);transition:width .2s ease, background .2s ease}
+.toc a:hover,.toc a.active{color:var(--ink)}
+.toc a:hover::before,.toc a.active::before{width:56px;background:var(--ink)}
+
+.social{margin-top:auto;display:flex;gap:6px;padding-top:28px}
+.social a{width:38px;height:38px;display:grid;place-items:center;border-radius:8px;color:var(--muted)}
+.social a:hover{color:var(--ink);background:var(--panel);text-decoration:none}
+.social svg{width:19px;height:19px}
+
+/* content column */
+.content{padding-block:72px 56px;min-width:0}
+section{padding-bottom:80px;scroll-margin-top:32px}
+.label{font:600 12px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.about p+p{margin-top:16px}
+.about p{max-width:64ch}
+.about strong{color:var(--ink);font-weight:600}
+
+/* entries (experience + projects) */
+.entries{display:flex;flex-direction:column;gap:8px}
+.entry{display:grid;grid-template-columns:132px minmax(0,1fr);gap:24px;padding:22px 20px;margin-inline:-20px;border-radius:10px;transition:background .2s ease}
+.entry:hover{background:var(--panel)}
+.when{font:500 12px/1.9 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.02em}
+.badge{display:inline-block;margin-top:6px;font:500 11px/1 var(--f-body);letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);padding:5px 8px;border-radius:4px;text-transform:none}
+.entry h3{font-size:17px;font-weight:600;line-height:1.4;letter-spacing:-.005em}
+.entry h3 a{color:var(--ink)}
+.entry h3 a:hover{color:var(--accent);text-decoration:none}
+.entry h3 .arrow{display:inline-block;margin-left:4px;transition:transform .2s ease;color:var(--muted)}
+.entry h3 a:hover .arrow{transform:translate(2px,-2px);color:var(--accent)}
+.org{font-size:14.5px;color:var(--muted);margin-top:2px}
+.entry p.desc{margin-top:10px;font-size:15px}
+.result{margin-top:10px;font-size:14.5px;padding-left:12px;border-left:2px solid var(--accent);color:var(--body)}
+.result b{color:var(--ink);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:14px 0 0}
+.tags li{font:500 12px/1 var(--f-body);color:var(--accent);background:var(--accent-soft);padding:6px 10px;border-radius:999px}
+@media (max-width:600px){.entry{grid-template-columns:1fr;gap:4px;margin-inline:0;padding:18px 0}.entry:hover{background:none}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 40px}
+.skills h3{font:600 14px/1.4 var(--f-body);color:var(--ink);margin-bottom:6px}
+.skills p{font-size:14.5px;color:var(--body)}
+@media (max-width:600px){.skills{grid-template-columns:1fr}}
+
+/* education */
+.edu-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 24px;flex-wrap:wrap}
+.edu-head h3{font-size:17px;font-weight:600}
+.edu-head .when{white-space:nowrap}
+.edu .deg{color:var(--body);margin-top:2px}
+.edu .gpa{font:500 13px/1 var(--f-mono);color:var(--ink);margin-top:10px}
+.edu .course{margin-top:14px;font-size:14.5px;color:var(--muted)}
+.school{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+@media (max-width:700px){.cols{grid-template-columns:1fr}}
+.plain{list-style:none;margin:0;padding:0}
+.plain li{padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.plain li:first-child{padding-top:0}
+.plain b{display:block;color:var(--ink);font-weight:600}
+.plain span{color:var(--muted)}
+.sub{font:600 14px/1 var(--f-body);color:var(--ink);margin-bottom:14px}
+
+/* contact */
+.contact p{max-width:56ch}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
+.mail code{font:500 15px/1 var(--f-mono);color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:12px 14px;border-radius:8px;user-select:all;overflow-wrap:anywhere}
+.btn{font:500 14px/1 var(--f-body);padding:12px 16px;border-radius:8px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
+.btn:hover{opacity:.88}
+.toast{font-size:13px;color:var(--accent)}
+footer{margin-top:24px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+/* phones and tablets */
+@media (max-width:960px){
+  .shell{grid-template-columns:1fr;gap:0}
+  .profile{position:static;height:auto;max-height:none;padding-block:48px 8px}
+  .toc{display:none}
+  .social{margin-top:20px;padding-top:0}
+  .content{padding-block:40px 40px}
+  section{padding-bottom:56px}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside class="profile">
+    <div class="avatar" aria-hidden="true">RS</div>
+    <h1>Rishik Sinha</h1>
+    <p class="role">AI &amp; Machine Learning Engineer</p>
+    <p class="tagline">B.Tech student building machine learning, NLP and data analytics systems end to end.</p>
+    <div class="loc">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Pune, India · Open to relocation</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>Symbiosis Institute of Technology</span>
+    </div>
+    <span class="open"><i></i>Open to internships</span>
+
+    <nav class="toc" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="social">
+      <a href="https://github.com/RishikSinha06" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.96 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.82 1.28.82 2.15 0 3.08-1.87 3.76-3.65 3.96.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/rishik-sinha-430274309" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.6 0H2.4A2.4 2.4 0 0 0 0 2.4v11.2A2.4 2.4 0 0 0 2.4 16h11.2a2.4 2.4 0 0 0 2.4-2.4V2.4A2.4 2.4 0 0 0 13.6 0ZM4.9 13.4H2.6V6h2.3v7.4ZM3.7 5a1.3 1.3 0 1 1 0-2.7 1.3 1.3 0 0 1 0 2.7Zm9.7 8.4h-2.3V9.8c0-.9 0-2-1.2-2s-1.4.9-1.4 1.9v3.7H6.2V6h2.2v1h.1c.3-.6 1.1-1.2 2.2-1.2 2.4 0 2.8 1.6 2.8 3.6v4Z"/></svg>
+      </a>
+      <a href="#contact" aria-label="Email" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <section id="about" class="about">
+      <h2 class="label">About</h2>
+      <p>I'm a third-year <strong>B.Tech student in Artificial Intelligence and Machine Learning</strong> at Symbiosis Institute of Technology, Pune. I enjoy taking a problem all the way from raw data to something people can use: cleaning and modelling the data, training and evaluating the model, then shipping it behind an API, an app or a dashboard.</p>
+      <p>My recent work covers <strong>deep learning</strong> (a CNN-Transformer that reconstructs room layouts from partial scans and acoustics), <strong>NLP</strong> (turning grocery receipts into per-item expiry estimates) and <strong>business intelligence</strong> (a Power BI model with 100+ DAX measures on 99,000 e-commerce orders). I care about evaluating results rigorously. When our room-reconstruction model beat its baseline, we ran control tests to check whether the audio input was really responsible, and reported what they showed.</p>
+      <p>Beyond coursework, I was a <strong>Google Gemini Student Ambassador</strong>, running workshops on generative AI for fellow students, and I'm joining <strong>TSS Consultancy</strong> in Mumbai as a software development intern this December. I've also cleared the Indian Navy's SSB assessment and swim competitively. I'm based in Pune and open to relocating for the right opportunity.</p>
+    </section>
+
+    <section id="experience">
+      <h2 class="label">Experience</h2>
+      <div class="entries">
+        <article class="entry">
+          <div class="when">Dec 2026 – Jan 2027<br><span class="badge">Incoming</span></div>
+          <div>
+            <h3>Software Development Engineer Intern</h3>
+            <p class="org">TSS Consultancy · Mumbai</p>
+            <p class="desc">One-month software development internship, 10 December 2026 to 9 January 2027.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">2025 – Jan 2026</div>
+          <div>
+            <h3>Google Gemini Student Ambassador</h3>
+            <p class="org">Google · SIT Pune</p>
+            <p class="desc">Promoted Google AI, Gemini and Google Cloud on campus. Ran workshops, Study Jams and hackathon sessions demonstrating generative AI, prompt engineering and practical ML workflows for students.</p>
+            <ul class="tags"><li>Generative AI</li><li>Prompt Engineering</li><li>Public Speaking</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="label">Projects</h2>
+      <div class="entries">
+        <article class="entry">
+          <div class="when">Oct 2026</div>
+          <div>
+            <h3><a href="https://github.com/RishikSinha06" target="_blank" rel="noopener">EchoSpace AI: Room Reconstruction from Scans and Acoustics<span class="arrow">↗</span></a></h3>
+            <p class="desc">Partial room scans leave hidden geometry unknown. In a team of three, I built a CNN-Transformer model that completes 2D floor plans from partial scans and simulated room impulse responses, served through FastAPI.</p>
+            <p class="result"><b>0.750 IoU</b> on unseen regions across 51 held-out rooms, <b>+2.15 points</b> over the geometry-only baseline (95% CI 0.8–3.6).</p>
+            <ul class="tags"><li>PyTorch</li><li>Transformers</li><li>CNNs</li><li>FastAPI</li></ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Oct 2026</div>
+          <div>
+            <h3>Olist E-Commerce Analytics Dashboard</h3>
+            <p class="desc">A 6-page interactive Power BI dashboard on about 99,000 Brazilian marketplace orders. Star-schema model built from 8 datasets cleaned in Power Query, with 100+ DAX measures for year-over-year analysis, dynamic Top-N rankings and RFM customer segmentation.</p>
+            <p class="result">K-means clustering and regression in R showed <b>late deliveries cut review scores from 4.3 to 2.3 stars</b>.</p>
+            <ul class="tags"><li>Power BI</li><li>DAX</li><li>Power Query</li><li>R</li></ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Jun 2026</div>
+          <div>
+            <h3><a href="https://github.com/RishikSinha06" target="_blank" rel="noopener">FreshSense: Food Waste Prevention<span class="arrow">↗</span></a></h3>
+            <p class="desc">Grocery receipts don't record what was bought or when it expires. Built a three-stage pipeline: OCR reads the receipt, spaCy named entity recognition extracts the items, and survival analysis estimates shelf life.</p>
+            <p class="result">Produces <b>per-item expiry-risk estimates</b> from a receipt photo, in a tested Streamlit app.</p>
+            <ul class="tags"><li>spaCy</li><li>EasyOCR</li><li>Tesseract</li><li>Lifelines</li><li>Streamlit</li></ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Jun 2026</div>
+          <div>
+            <h3><a href="https://github.com/RishikSinha06" target="_blank" rel="noopener">PropertyIMS: Property Income Management<span class="arrow">↗</span></a></h3>
+            <p class="desc">A Flask and MySQL web application for tracking property income, with a normalized database, payment alerts and an analytics dashboard.</p>
+            <p class="result">Unified <b>three income streams</b> in one system, with CSV, Excel and PDF reporting.</p>
+            <ul class="tags"><li>Flask</li><li>MySQL</li><li>Python</li><li>HTML/CSS</li></ul>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Apr 2026</div>
+          <div>
+            <h3>ASD Stress Detection: End-to-End ML Pipeline</h3>
+            <p class="desc">A reproducible predictive modelling pipeline for stress detection across physiological and contextual variables, comparing Bayesian Optimization, Monte Carlo simulation, Particle Swarm Optimization and Optuna for tuning.</p>
+            <p class="result">Benchmarked <b>10+ algorithms across 15 features</b> under one consistent evaluation setup.</p>
+            <ul class="tags"><li>Scikit-learn</li><li>XGBoost</li><li>Optuna</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="label">Skills</h2>
+      <div class="skills">
+        <div><h3>Languages</h3><p>Python, SQL, R, Java, C</p></div>
+        <div><h3>Machine Learning</h3><p>Regression, classification, clustering, Scikit-learn, XGBoost, feature engineering, model evaluation, hyperparameter optimization</p></div>
+        <div><h3>Deep Learning</h3><p>Neural networks, CNNs, Transformers, PyTorch</p></div>
+        <div><h3>NLP &amp; Generative AI</h3><p>spaCy, named entity recognition, text processing, LLM applications, prompt engineering, AI agents</p></div>
+        <div><h3>Data &amp; Analytics</h3><p>Power BI, DAX, Power Query, star-schema modelling, Excel, Pandas, NumPy, Matplotlib, Seaborn</p></div>
+        <div><h3>Backend, Databases &amp; Tools</h3><p>FastAPI, Flask, Django, MySQL, PostgreSQL, SQLite, Git, Jupyter, Google Colab</p></div>
+      </div>
+    </section>
+
+    <section id="education" class="edu">
+      <h2 class="label">Education</h2>
+      <div class="edu-head">
+        <h3>Symbiosis Institute of Technology, Pune</h3>
+        <span class="when">Aug 2024 – Aug 2028</span>
+      </div>
+      <p class="deg">B.Tech, Artificial Intelligence and Machine Learning</p>
+      <p class="gpa">CGPA 7.87 / 10</p>
+      <p class="course">Coursework: Machine Learning, Deep Learning, Natural Language Processing, Agentic AI, Applications of ML, Data Structures &amp; Algorithms, Database Management Systems, Computer Networks, Probability &amp; Statistics, Data Visualization, Financial Mathematics, AI Ethics, Object-Oriented Programming.</p>
+      <p class="school">Class XII, Ryan International School, Sanpada (2024) · Class X, Navy Children School, Mumbai (2022)</p>
+
+      <div class="cols" style="margin-top:48px">
+        <div>
+          <p class="sub">Achievements</p>
+          <ul class="plain">
+            <li><b>SSB Qualified, Indian Navy</b><span>Cleared the five-day Services Selection Board assessment, SSB Kolkata, Apr 2025</span></li>
+            <li><b>Smart India Hackathon</b><span>Top 20 teams across all undergraduate batches at SIT Pune</span></li>
+            <li><b>District-level competitive swimmer</b><span>Represented the SIT Pune team</span></li>
+            <li><b>Model United Nations delegate</b><span>2022–2023</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="sub">Certifications</p>
+          <ul class="plain">
+            <li>IBM Business Intelligence Professional Certificate</li>
+            <li>Python for Data Science and Machine Learning Bootcamp</li>
+            <li>Crash Course on Python</li>
+            <li>Excel Essentials for Data Analytics</li>
+            <li>Generative AI Mastery Workshop</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="label">Contact</h2>
+      <p>I'm looking for internships in machine learning, data science and software engineering, in Pune or elsewhere. Email is the quickest way to reach me.</p>
+      <div class="mail">
+        <code id="email">rishiksinha9@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy email</button>
+        <span class="toast" id="toast" role="status" aria-live="polite"></span>
+      </div>
+      <footer>© 2026 Rishik Sinha</footer>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy'), toast=document.getElementById('toast'), el=document.getElementById('email');
+  function selectText(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  btn.addEventListener('click',function(){
+    var t=el.textContent.trim();
+    var ok=function(){toast.textContent='Copied';setTimeout(function(){toast.textContent='';},2000);};
+    var fail=function(){selectText();toast.textContent='Selected, press Ctrl+C';};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fail);}else{fail();}
+  });
+
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  if(!('IntersectionObserver' in window)||!links.length)return;
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.classList.remove('active');});var a=map[e.target.id];if(a)a.classList.add('active');}
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  Object.keys(map).forEach(function(id){var s=document.getElementById(id);if(s)obs.observe(s);});
+})();
+</script>
+</body>
+</html>
